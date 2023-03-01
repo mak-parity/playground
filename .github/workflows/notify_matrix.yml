@@ -1,0 +1,15 @@
+name: send a matrix message every time a new issue is opened
+on:
+  issues:
+    types: [opened]
+jobs:
+  ping_matrix:
+   runs-on: ubuntu-latest
+   steps:
+     - name: send message
+       uses: s3krit/matrix-message-action@v0.0.3
+       with:
+         room_id: ${{ secrets.NOTIFY_MATRIX_ROOM_ID }}
+         access_token: ${{ secrets.NOTIFY_MATRIX_ACCESS_TOKEN }}
+         message: "A new issue has been opened:<br>**${{github.event.issue.title}}:**<br>${{github.event.issue.html_url}}"
+         server: "m.parity.io"
