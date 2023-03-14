@@ -15,4 +15,4 @@ jobs:
          access_token: ${{ secrets.NOTIFY_MATRIX_ACCESS_TOKEN }}
          message: "A new ink! or pallet-contracts issue:<br>**${{github.event.issue.title}}:**<br>${{github.event.issue.html_url}}"
          server: "m.parity.io"
-       if: contains( github.event.issue.labels.*.name, 'P - contracts-pallet') || contains( github.event.issue.labels.*.name, 'P - ink!')
+       if: github.event.label.name == 'P - contracts-pallet' || github.event.label.name == 'P - ink!'
