@@ -30,7 +30,9 @@ jobs:
           command -v gq
       - name: Test gh
         run: |
+          export PATH="${PWD}/scripts:$PATH"
           gh search prs --repo paritytech/substrate --limit 9
+          gh search prs --repo paritytech/substrate --limit 9 --json "number" | gq '{{range .}}{{.number}}{{end}}'
       - name: Run the generation script
         run: |
           export DATE_FROM="2023-01-10"
