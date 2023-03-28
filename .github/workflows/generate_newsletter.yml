@@ -21,20 +21,6 @@ jobs:
     steps:
       - name: checkout
         uses: actions/checkout@v3
-      - name: Get gq executable
-        run: |
-          wget https://github.com/pbar1/gq/releases/download/1.4.0/gq_linux_amd64 -O scripts/gq
-          chmod +x scripts/gq
-          export PATH="${PWD}/scripts:$PATH"
-          which gq
-          command -v gq
-          arch
-          gq --version
-      - name: Test gh
-        run: |
-          export PATH="${PWD}/scripts:$PATH"
-          gh search prs --repo paritytech/substrate --limit 9
-          gh search prs --repo paritytech/substrate --limit 9 --json "number" | gq '{{range .}}{{.number}}{{end}}'
       - name: Run the generation script
         run: |
           export DATE_FROM="2023-01-10"
@@ -49,3 +35,5 @@ jobs:
         run: cat 2_node.md
       - name: Read the rest file
         run: cat 3_rest.md
+      - name: Create a gist
+        run: gh gist create 1_runtime.md 2_node.md 3_rest.md
