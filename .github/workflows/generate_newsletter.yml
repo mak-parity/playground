@@ -24,8 +24,8 @@ jobs:
         run: wget https://github.com/pbar1/gq/releases/download/1.4.0/gq_linux_amd64 -O scripts/gq
       - name: Run the generation script
         run: |
-         export DATE_FROM=${INPUT_DATEFROM}
-         export DATE_TO=${INPUT_DATETO}
+         export DATE_FROM="${{ github.event.inputs.datefrom }}"
+         export DATE_TO="${{ github.event.inputs.dateto }}"
          scripts/generate_newsletter.sh
       - name: Read runtime file
         run: cat 1_runtime.md
