@@ -26,6 +26,7 @@ jobs:
         run: |
          export DATE_FROM="${{ github.event.inputs.datefrom }}"
          export DATE_TO="${{ github.event.inputs.dateto }}"
+         export PATH="${PWD}/scripts:$PATH"
          scripts/generate_newsletter.sh
       - name: Read runtime file
         run: cat 1_runtime.md
