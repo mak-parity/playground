@@ -3,11 +3,11 @@ name: Generate Newsletter
 on:
   workflow_dispatch:
     inputs:
-      date-from:
+      datefrom:
         description: 'Starting date of merged PRs (inclusive)'
         type: string
         required: true
-      date-to:
+      dateto:
         description: 'Ending date of merged PRs (inclusive)'
         type: string
         required: true
@@ -24,8 +24,8 @@ jobs:
         run: wget https://github.com/pbar1/gq/releases/download/1.4.0/gq_linux_amd64 -O scripts/gq
       - name: Run the generation script
         run: |
-         export DATE_FROM=${INPUT_DATE-FROM}
-         export DATE_TO=${INPUT_DATE-TO}
+         export DATE_FROM=${INPUT_DATEFROM}
+         export DATE_TO=${INPUT_DATETO}
          scripts/generate_newsletter.sh
       - name: Read runtime file
         run: cat 1_runtime.md
