@@ -17,7 +17,7 @@ jobs:
   generate_newsletter:
     runs-on: ubuntu-latest
     env:
-      GH_TOKEN: ${{ github.token }}
+      GH_TOKEN: ${{ secrets.NEWSLETTER_GITHUB_PAT }}
     steps:
       - name: checkout
         uses: actions/checkout@v3
@@ -28,6 +28,9 @@ jobs:
           export PATH="${PWD}/scripts:$PATH"
           which gq
           command -v gq
+      - name: Test gh
+        run: |
+          gh search prs --repo paritytech/substrate --limit 9
       - name: Run the generation script
         run: |
           export DATE_FROM="2023-01-10"
