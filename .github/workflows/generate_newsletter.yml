@@ -1,6 +1,7 @@
 name: Generate Newsletter
 
 on:
+  push:
   workflow_dispatch:
     inputs:
       datefrom:
@@ -21,13 +22,17 @@ jobs:
       - name: checkout
         uses: actions/checkout@v3
       - name: Get gq executable
-        run: wget https://github.com/pbar1/gq/releases/download/1.4.0/gq_linux_amd64 -O scripts/gq
+        run: |
+          wget https://github.com/pbar1/gq/releases/download/1.4.0/gq_linux_amd64 -O scripts/gq
+          chmod +x scripts/gq
       - name: Run the generation script
         run: |
-         export DATE_FROM="${{ github.event.inputs.datefrom }}"
-         export DATE_TO="${{ github.event.inputs.dateto }}"
-         export PATH="${PWD}/scripts:$PATH"
-         scripts/generate_newsletter.sh
+          export DATE_FROM="2023-01-10"
+          export DATE_TO="2023-02-10"
+          #  export DATE_FROM="${{ github.event.inputs.datefrom }}"
+          #  export DATE_TO="${{ github.event.inputs.dateto }}"
+          export PATH="${PWD}/scripts:$PATH"
+          scripts/generate_newsletter.sh
       - name: Read runtime file
         run: cat 1_runtime.md
       - name: Read node file
