@@ -18,6 +18,7 @@ jobs:
     env:
       DATE_FROM: ${{github.event.inputs.date_from}}
       DATE_TO: ${{github.event.inputs.date_to}}
+      GH_TOKEN: ${{ github.token }}
     steps:
       - name: checkout
         uses: actions/checkout@v3
