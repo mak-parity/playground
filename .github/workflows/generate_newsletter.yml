@@ -28,6 +28,7 @@ jobs:
           export PATH="${PWD}/scripts:$PATH"
           which gq
           command -v gq
+          arch
           gq --version
       - name: Test gh
         run: |
