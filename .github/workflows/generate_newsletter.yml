@@ -32,4 +32,4 @@ jobs:
       - name: Read the rest file
         run: cat 3_rest.md
       - name: Create a gist
-        run: gh gist create 1_runtime.md 2_node.md 3_rest.md
+        run: gh gist create --public 1_runtime.md 2_node.md 3_rest.md

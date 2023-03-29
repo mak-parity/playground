@@ -7,6 +7,12 @@ set -euo pipefail
 # Prerequisites:
 # - jq
 
+# Usage:
+# Provide DATE_FROM and DATE_TO variables - a range of merge times of the PRs.
+# Run the script - it will generate 3 markdown files.
+# One for the runtime PRs, one for node PRs, and one for the rest.
+
+
 # The --label search is an AND type of query.
 RUNTIME_LABELS="B1-note_worthy,T1-runtime"
 NODE_LABELS="B1-note_worthy,T0-node"
