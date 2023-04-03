@@ -25,6 +25,8 @@ jobs:
           export DATE_FROM="${{ github.event.inputs.datefrom }}"
           export DATE_TO="${{ github.event.inputs.dateto }}"
           scripts/generate_newsletter.sh
+        env:
+          GH_TOKEN: ${{ github.token }}
       - name: Read runtime file
         run: cat 1_runtime.md
       - name: Read node file
