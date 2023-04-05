@@ -1,0 +1,23 @@
+name: Dispatch playground
+
+on:
+  schedule:
+    - cron: '*/5 * * * *'
+  workflow_dispatch:
+    inputs:
+      smartcontracts:
+        type: boolean
+      devhub:
+        type: boolean
+
+jobs:
+  job_smartcontracts:
+    if: ${{ vars.GITHUB_EVENT_NAME }} == 'schedule' || ${{ inputs.smartcontracts }}
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo hello world
+  job_devhub:
+    if: ${{ vars.GITHUB_EVENT_NAME }} == 'schedule' || ${{ inputs.devhub }}
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo hello world
