@@ -21,3 +21,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo hello world
+      - run: echo ${{ inputs.devhub == 'true' }}
+      - run: echo ${{ inputs.devhub }}
