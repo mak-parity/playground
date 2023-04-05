@@ -12,12 +12,12 @@ on:
 
 jobs:
   job_smartcontracts:
-    if: ${{ vars.GITHUB_EVENT_NAME }} == 'schedule' || ${{ inputs.smartcontracts }}
+    if: ${{ vars.GITHUB_EVENT_NAME }} == 'schedule' || ${{ inputs.smartcontracts == 'true' }}
     runs-on: ubuntu-latest
     steps:
       - run: echo hello world
   job_devhub:
-    if: ${{ vars.GITHUB_EVENT_NAME }} == 'schedule' || ${{ inputs.devhub }}
+    if: ${{ vars.GITHUB_EVENT_NAME }} == 'schedule' || ${{ inputs.devhub == 'true' }}
     runs-on: ubuntu-latest
     steps:
       - run: echo hello world
