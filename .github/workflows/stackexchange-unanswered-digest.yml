@@ -1,0 +1,52 @@
+name: StackExchange Playground
+on:
+  workflow_dispatch:
+    inputs:
+      smartcontracts:
+        description: 'Include the Smart Contracts team.'
+        type: boolean
+      devhub:
+        description: 'Include the DevHub team.'
+        type: boolean
+      subxt:
+        description: 'Include the subxt team.'
+        type: boolean
+      support:
+        description: 'Include the Support team.'
+        type: boolean
+      integrations:
+        description: 'Include the Integrations team.'
+        type: boolean
+#  schedule:
+#    - cron: '30 9 * * MON'
+
+jobs:
+  send_smartcontracts_digest:
+    if: ${{ vars.GITHUB_EVENT_NAME == 'schedule' || inputs.smartcontracts == 'true' }}
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo Hello World
+
+  send_devhub_digest:
+    if: ${{ vars.GITHUB_EVENT_NAME == 'schedule' || inputs.devhub == 'true' }}
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo Hello World
+
+  send_subxt_digest:
+    if: ${{ vars.GITHUB_EVENT_NAME == 'schedule' || inputs.subxt == 'true' }}
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo Hello World
+
+  send_support_digest:
+    if: ${{ vars.GITHUB_EVENT_NAME == 'schedule' || inputs.support == 'true' }}
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo Hello World
+
+  send_integrations_digest:
+    if: ${{ vars.GITHUB_EVENT_NAME == 'schedule' || inputs.integrations == 'true' }}
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo Hello World
