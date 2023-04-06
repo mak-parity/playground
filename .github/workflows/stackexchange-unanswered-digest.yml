@@ -24,9 +24,10 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - run: echo ${{ vars.GITHUB_EVENT_NAME == 'schedule' || inputs.smartcontracts == 'true' }}
+      - run: echo ${{ vars.GITHUB_EVENT_NAME == 'schedule' || inputs.smartcontracts }}
       - run: echo ${{ vars.GITHUB_EVENT_NAME == 'schedule' }}
       - run: echo ${{ inputs.smartcontracts == 'true' }}
+      - run: echo ${{ inputs.smartcontracts }}
       - run: echo ${{ inputs.smartcontracts }}
 
   send_smartcontracts_digest:
