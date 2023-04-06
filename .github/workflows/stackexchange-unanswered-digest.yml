@@ -21,6 +21,13 @@ on:
 #    - cron: '30 9 * * MON'
 
 jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo ${{ vars.GITHUB_EVENT_NAME == 'schedule' || inputs.smartcontracts == 'true' }}
+      - run: echo ${{ vars.GITHUB_EVENT_NAME == 'schedule' }}
+      - run: echo ${{ inputs.smartcontracts == 'true' }}
+
   send_smartcontracts_digest:
     if: ${{ vars.GITHUB_EVENT_NAME == 'schedule' || inputs.smartcontracts == 'true' }}
     runs-on: ubuntu-latest
