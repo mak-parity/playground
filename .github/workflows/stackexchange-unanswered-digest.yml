@@ -21,41 +21,33 @@ on:
 #    - cron: '30 9 * * MON'
 
 jobs:
-  test:
-    runs-on: ubuntu-latest
-    steps:
-      - run: echo ${{ vars.GITHUB_EVENT_NAME == 'schedule' || inputs.smartcontracts }}
-      - run: echo ${{ vars.GITHUB_EVENT_NAME == 'schedule' }}
-      - run: echo ${{ inputs.smartcontracts == 'true' }}
-      - run: echo ${{ inputs.smartcontracts }}
-      - run: echo ${{ inputs.smartcontracts }}
 
   send_smartcontracts_digest:
-    if: ${{ vars.GITHUB_EVENT_NAME == 'schedule' || inputs.smartcontracts == 'true' }}
+    if: ${{ vars.GITHUB_EVENT_NAME == 'schedule' || inputs.smartcontracts }}
     runs-on: ubuntu-latest
     steps:
       - run: echo Hello World
 
   send_devhub_digest:
-    if: ${{ vars.GITHUB_EVENT_NAME == 'schedule' || inputs.devhub == 'true' }}
+    if: ${{ vars.GITHUB_EVENT_NAME == 'schedule' || inputs.devhub }}
     runs-on: ubuntu-latest
     steps:
       - run: echo Hello World
 
   send_subxt_digest:
-    if: ${{ vars.GITHUB_EVENT_NAME == 'schedule' || inputs.subxt == 'true' }}
+    if: ${{ vars.GITHUB_EVENT_NAME == 'schedule' || inputs.subxt }}
     runs-on: ubuntu-latest
     steps:
       - run: echo Hello World
 
   send_support_digest:
-    if: ${{ vars.GITHUB_EVENT_NAME == 'schedule' || inputs.support == 'true' }}
+    if: ${{ vars.GITHUB_EVENT_NAME == 'schedule' || inputs.support }}
     runs-on: ubuntu-latest
     steps:
       - run: echo Hello World
 
   send_integrations_digest:
-    if: ${{ vars.GITHUB_EVENT_NAME == 'schedule' || inputs.integrations == 'true' }}
+    if: ${{ vars.GITHUB_EVENT_NAME == 'schedule' || inputs.integrations }}
     runs-on: ubuntu-latest
     steps:
       - run: echo Hello World
