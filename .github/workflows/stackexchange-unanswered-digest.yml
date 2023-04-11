@@ -22,6 +22,20 @@ on:
 
 jobs:
 
+  send_if:
+    if: ${{ vars.GITHUB_EVENT_NAME == 'schedule' }}
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo Hello World
+
+  send_always:
+    if:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo ${{ vars.GITHUB_EVENT_NAME == 'schedule' || inputs.smartcontracts }}
+      - run: echo ${{ vars.GITHUB_EVENT_NAME == 'schedule' }}
+      - run: echo ${{ vars.GITHUB_EVENT_NAME }}
+
   send_smartcontracts_digest:
     if: ${{ vars.GITHUB_EVENT_NAME == 'schedule' || inputs.smartcontracts }}
     runs-on: ubuntu-latest
