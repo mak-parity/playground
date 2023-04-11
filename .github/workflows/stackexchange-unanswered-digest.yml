@@ -23,7 +23,7 @@ on:
 jobs:
 
   send_if:
-    if: ${{ vars.GITHUB_EVENT_NAME == 'schedule' }}
+    if: ${{ github.event_name == 'schedule' }}
     runs-on: ubuntu-latest
     steps:
       - run: echo Hello World
@@ -32,36 +32,36 @@ jobs:
     if:
     runs-on: ubuntu-latest
     steps:
-      - run: echo ${{ vars.GITHUB_EVENT_NAME == 'schedule' || inputs.smartcontracts }}
-      - run: echo ${{ vars.GITHUB_EVENT_NAME == 'schedule' }}
-      - run: echo ${{ vars.GITHUB_EVENT_NAME }}
+      - run: echo ${{ github.event_name == 'schedule' || inputs.smartcontracts }}
+      - run: echo ${{ github.event_name == 'schedule' }}
+      - run: echo ${{ github.event_name }}
 
   send_smartcontracts_digest:
-    if: ${{ vars.GITHUB_EVENT_NAME == 'schedule' || inputs.smartcontracts }}
+    if: ${{ github.event_name == 'schedule' || inputs.smartcontracts }}
     runs-on: ubuntu-latest
     steps:
       - run: echo Hello World
 
   send_devhub_digest:
-    if: ${{ vars.GITHUB_EVENT_NAME == 'schedule' || inputs.devhub }}
+    if: ${{ github.event_name == 'schedule' || inputs.devhub }}
     runs-on: ubuntu-latest
     steps:
       - run: echo Hello World
 
   send_subxt_digest:
-    if: ${{ vars.GITHUB_EVENT_NAME == 'schedule' || inputs.subxt }}
+    if: ${{ github.event_name == 'schedule' || inputs.subxt }}
     runs-on: ubuntu-latest
     steps:
       - run: echo Hello World
 
   send_support_digest:
-    if: ${{ vars.GITHUB_EVENT_NAME == 'schedule' || inputs.support }}
+    if: ${{ github.event_name == 'schedule' || inputs.support }}
     runs-on: ubuntu-latest
     steps:
       - run: echo Hello World
 
   send_integrations_digest:
-    if: ${{ vars.GITHUB_EVENT_NAME == 'schedule' || inputs.integrations }}
+    if: ${{ github.event_name == 'schedule' || inputs.integrations }}
     runs-on: ubuntu-latest
     steps:
       - run: echo Hello World
