@@ -17,8 +17,8 @@ on:
       integrations:
         description: 'Include the Integrations team.'
         type: boolean
-#  schedule:
-#    - cron: '30 9 * * MON'
+  schedule:
+    - cron: '*/5 * * * *'
 
 jobs:
 
