@@ -1,0 +1,18 @@
+name: Notify about ink! or pallet-contracts issues
+# https://github.com/paritytech/opstooling/issues/179
+on:
+  issues:
+    types:
+      - labeled
+jobs:
+  ping_matrix:
+   runs-on: ubuntu-latest
+   steps:
+     - name: send message
+       uses: s3krit/matrix-message-action@v0.0.3
+       with:
+         room_id: ${{ secrets.NOTIFY_MATRIX_ROOM_ID }}
+         access_token: ${{ secrets.NOTIFY_MATRIX_ACCESS_TOKEN }}
+         message: "A new ink! or pallet-contracts issue:<br>**${{github.event.issue.title}}:**<br>${{github.event.issue.html_url}}"
+         server: "m.parity.io"
+       if: github.event.label.name == 'P - contracts-pallet' || github.event.label.name == 'P - ink!'
