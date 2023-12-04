@@ -10,4 +10,5 @@ jobs:
   ping_matrix:
    runs-on: ubuntu-latest
    steps:
-     - run: echo "A new issue has been ${{github.event.action}}:<br>**${{github.event.issue.title}}:**<br>${{github.event.issue.html_url}}"
+     # - run: echo "A new issue has been ${{github.event.action}}:<br>**${{github.event.issue.title}}:**<br>${{github.event.issue.html_url}}"
+     - run: echo "A new issue has been ${{github.event.action}}:<br>${{github.event.issue.html_url}}"
