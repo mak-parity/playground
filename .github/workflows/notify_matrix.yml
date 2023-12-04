@@ -1,3 +1,5 @@
+permissions: {}
+
 name: send a matrix message every time a new issue is opened
 on:
   issues:
