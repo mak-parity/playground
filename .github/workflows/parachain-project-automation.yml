@@ -21,7 +21,7 @@ jobs:
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PROJECT_TOKEN: ${{ steps.generate_token.outputs.token }}
-          project: 5
+          project: 6
           project_field: 'meta'
           project_value: 'async backing'
           labels: |
